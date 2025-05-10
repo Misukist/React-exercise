@@ -1,29 +1,35 @@
-import {useState} from 'react'
+import { useState } from 'react'
 
-const App = (props) => {
+const App = () => {
+  // tallenna napit omaan tilaansa
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
 
-  const [value, setValue] = useState(10) 
-
-  const setToValue = (newValue) => {
-    console.log('valuenow', newValue)
-    setValue(newValue)
+  const handleGoodClick = () => {
+    setGood(good + 1)
   }
 
-  const Button = (props) => (
-  <button onClick={props.onClick}>
-    {props.text}
-  </button>
-  )
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1)
+  }
+
+  const handleBadClick = () => {
+    setBad(bad + 1)
+  }
 
   return (
     <div>
-      {value}
-      <Button onClick={() => setToValue(1000)} text="thousand" />
-      <Button onClick={() => setToValue(0)} text="reset" />
-      <Button onClick={() => setToValue(value + 1)} text="increment" />
+      <h1>Give Feedback</h1>
+      <button onClick ={handleGoodClick}>Good</button>
+      <button onClick ={handleNeutralClick}>Neutral</button>
+      <button onClick ={handleBadClick}>Bad</button>
+      <h1>Statistic</h1>
+      <p>Good = {good} </p>
+      <p>Neutral = {neutral}</p> 
+      <p>Bad = {bad} </p>
     </div>
   )
 }
-
 
 export default App
